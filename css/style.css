@@ -1,0 +1,405 @@
+:root{
+    /* COLOR */
+    --primary-red-500: hsl(356, 100%, 66%);
+    --primary-red-400: hsl(355, 100%, 74%);
+    --primary-blue-900: hsl(208, 49%, 24%);
+    --neutral-white: hsl(0, 100%, 100%);
+    --neutral-gray-600: hsl(207, 13%, 34%);
+    --neutral-gray-900: hsl(240, 10%, 16%);
+    --orange-300: hsl(13, 100%, 72%);
+    --red-550: hsl(353, 100%, 62%);
+    --purple-950: hsl(237, 17%, 21%);
+    --purple-900: hsl(237, 23%, 31%);
+
+    /* FONT */
+    --ffOverpass: "Overpass" ,sans-serif;
+    --fFUbuntu: "Ubuntu" ,sans-serif;
+    --fwLight: 300;
+    --fwRegular: 400;
+    --fwMedium: 500;
+    --fwSemiBold: 600;
+    --fwBold: 700;
+    --fsBody: 1rem;
+}
+
+/*========================= RESET ========================*/
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none;
+}
+button{
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    color: inherit;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    padding-block-start: 0;
+    padding-block-end: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+html{
+    height: 100%;
+    scroll-behavior: smooth;
+}
+body{
+    width: 100%;
+    background-color: var(--neutral-white);
+    font-size: var(--fsBody);
+}
+
+/*=============================== SAME STYLE ===============================*/
+.first_content-info,
+.second_content-info,
+.third_content-info,
+ header,
+ footer{
+    padding-inline: 2rem;
+}
+.hidden{
+    display: none;
+}
+.ds-flex{
+    display: flex;
+}
+.main-menu,
+.title,
+.login-button,
+.nav_links-list a{
+    font-family: var(--ffOverpass);
+}
+.btn{
+    padding: 0.75rem 1rem;
+    border-radius: 1.5rem;
+    font-family: var(--fFUbuntu);
+    font-size: 0.875rem;
+}
+.center_align{
+    text-align: center;
+}
+.desc{
+    font-family: var(--ffOverpass);
+    font-size: 0.938rem;
+    line-height: 1.6;
+}
+.main_first-container .desc,
+.main_third-container .desc{
+    color: var(--neutral-gray-600);
+    font-weight: var(--fwRegular);
+}
+.main_first-container h2,
+ main h3{
+    font-weight: var(--fwSemiBold);
+    color: var(--primary-blue-900);
+}
+.nav_links-buttons,
+.main_first-content,
+.main_third-content{
+    flex-direction: column;
+    align-items: center;
+}
+body.no_scroll{
+    overflow: hidden;
+}
+
+/*============================== HEADER ==============================*/
+header{
+    padding-block: 2rem;
+    min-height: 90dvh;
+    background-image: url(../images/bg-pattern-intro-mobile.svg), linear-gradient(135deg, var(--orange-300), var(--red-550));
+    background-size: 350%, 100%;
+    background-position: 35% 35%;
+    border-bottom-left-radius: 6.25rem;
+    position: relative;
+}
+.nav_items{
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 8dvh;
+}
+.nav_left-items{
+    position: relative;
+}
+.nav_logo img{
+    height: 1.875rem;
+}
+.nav_links-container{
+    position: absolute;
+    top: 10dvh;
+    background-color: var(--neutral-white);
+    width: calc(100vw - 4rem);
+    height: calc(100dvh - 20dvh);
+    padding: 1.5rem;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 10px 40px hsl(0, 0%, 31%);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY( -100%);
+    transition: opacity 0.3s ease , transform 0.3s ease;
+    z-index: 20;
+}
+.nav_links-container.show-links{
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY( 0);
+}
+.main-menu{
+    border: none;
+    padding-block-end: 1.5rem;
+    font-size: 1.125rem;
+    color: var(--primary-blue-900);
+    font-weight: var(--fwSemiBold);
+    letter-spacing: -0.031rem;
+    transition: color 0.3s ease;
+}
+.submenu{
+    background-color: hsl(0, 5%, 93%);
+    width: 100%;
+    border-radius: 8px;
+    padding-block-start: 1.3rem;
+    padding-block-end: 0.55rem;
+    margin-block-start: -0.5rem;
+    margin-block-end: 1rem;
+    display: none;
+}
+.submenu a{
+    font-size: 1.063rem;
+    font-weight: 580;
+    color: var(--neutral-gray-600);
+    display: inline-block;
+    padding-block-end: 0.75rem;
+    letter-spacing: -0.025rem;
+}
+.main-menu.show-submenu{
+    color: var(--neutral-gray-600);
+}
+.main-menu.show-submenu + .submenu{
+    display: inline-block;
+}
+.arrow{
+    margin-left: 0.2rem;
+    transition: transform 0.4s ease;
+}
+.main-menu.show-submenu .arrow{
+    transform: rotate(180deg);
+}
+.nav_links-buttons{
+    border-block-start: 2px solid hsl(0, 7%, 92%);
+    padding-block-start: 2rem;
+    gap: 1rem;
+}
+.nav_links-buttons a{
+    font-weight: var(--fwMedium);
+}
+.sign_up-button{
+    background: linear-gradient(to right ,var(--orange-300) ,var(--red-550));
+    padding: 0.75rem 2rem;
+    border-radius: 1.5rem;
+    color: var(--neutral-white);
+    font-family: var(--fFUbuntu);
+}
+.links_toggle-buttons{
+    border: none;
+}
+.toggle_links-icon{
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 21;
+    transition: opacity 0.3s ease;
+}
+.toggle_links-icon.active-icon{
+    opacity: 1;
+}
+.intro{
+    padding-block-start: 15dvh;
+}
+
+.main-title{
+    font-size: 1.875rem;
+    font-weight: var(--fwMedium);
+    color: var(--neutral-white);
+    letter-spacing: -0.044rem;
+    padding-block-end: 1rem;
+}
+.intro-desc{
+    font-family: var(--fFUbuntu);
+    font-weight: var(--fwRegular);
+    color: hsla(0, 100%, 100%, 80%);
+    line-height: 1.4;
+    font-size: 0.938rem;
+    padding-block-end: 2rem;
+}
+.start_free-button{
+    margin-inline-end: 0.625rem;
+    color: var(--primary-red-500);
+    background-color: var(--neutral-white);
+    font-weight: var(--fwBold);
+}
+.learn_more-button{
+    color: var(--neutral-white);
+    font-weight: var(--fwMedium);
+    border: 1px solid var(--neutral-white);
+}
+
+/*============================== MAIN ==================================*/
+.main_first-container{
+    padding-block-start: 2rem;
+    margin-block-end: 4rem;
+}
+.main_first-container h2{
+    font-size: 1.563rem;
+    letter-spacing: -0.038rem;
+    margin-block-end: 2rem;
+}
+.main_first-content{
+    gap: 3rem;
+}
+.editor-mb{
+    width: 100%;
+    display: block;
+}
+main h3{
+    font-size: 1.5rem;
+    letter-spacing: -0.025rem;
+    margin-block-end: 1rem;
+}
+.management-info .title{
+    padding-block-start: 3rem;
+}
+.main_second-container{
+    background-color: var(--purple-950);
+    background-image: url(../images/bg-pattern-circles.svg);
+    background-size: 150%;
+    background-position: center -13.5rem;
+    background-repeat: no-repeat; 
+    border-top-right-radius: 6.25rem;
+    border-bottom-left-radius: 6.25rem;
+    padding-block-end: 5rem;
+    margin-block-start: 14rem;
+}
+.second_content-image{
+    height: 12.5rem;
+    position: relative;
+}
+.illustration-phones{
+    position: absolute;
+    left: 50%;
+    top: -10rem;
+    transform: translateX( -50%);
+    z-index: 22;
+}
+.second_content-info{
+    position: relative;
+    z-index: 23;
+}
+.main_second-container .title{
+    font-size: 1.875rem;
+    color: var(--neutral-white);
+    padding-block-end: 1.5rem;
+}
+.main_second-container .desc{
+    color: hsl(0, 1%, 87%);
+    font-weight: var(--fwLight);
+}
+.main_third-container{
+    margin-block-start: 4rem;
+}
+.main_third-content{
+    gap: 2.5rem;
+}
+.main_third-content .second-info{
+    padding-block-start: 2.5rem;
+}
+footer{
+    background-color: var(--neutral-gray-900);
+    border-top-right-radius: 6.25rem;
+    margin-block-start: 5rem;
+}
+.footer-container{
+    padding-block: 4rem;
+}
+.footer_logo{
+    display: inline-block;
+    padding-block-end: 2rem;
+}
+.items{
+    padding-block-start: 3rem;
+}
+.items h3{
+    color: var(--neutral-white);
+    font-family: var(--fFUbuntu);
+    font-weight: var(--fwRegular);
+    padding-block-end: 1.5rem;
+    font-size: 1.125rem;
+}
+.items a{
+    color: hsl(0, 4%, 85%);
+    font-family: var(--fFUbuntu);
+    font-weight: var(--fwLight);
+    font-size: 0.938rem;
+    padding-block-end: 0.625rem;
+    display: inline-block;
+}
+
+/*=========================== ATTRIBUTION =========================*/
+.attribution {
+    font-size: 0.75rem; 
+    font-family: var(--fFUbuntu);
+    padding-block-end: 2rem;
+    font-weight: var(--fwLight);
+    color: var(--primary-red-500);
+}    
+.attribution a {
+    color: var(--neutral-white);
+    transition: color 0.3s ease;
+}
+
+/*==================== Remove Mobile Tap Color =======================*/
+a,button{
+    -webkit-tap-highlight-color: transparent;
+}
+
+/*=================== Prefers Reduced Motion ========================*/
+@media (prefers-reduced-motion: reduce) {
+    html{
+        scroll-behavior: auto
+    }
+    *,
+    *::before,
+    *::after{
+        transition: none;
+        transform: scale(0.99);
+    }   
+}
