@@ -402,6 +402,7 @@
         margin: 0 auto;
     }
     .illustration-phones{
+        top: -4rem;
         left: -2.5rem;
     }
     .main-second-content,
@@ -424,9 +425,6 @@
     .main-second-content,
     .main_third-content{
         gap: 0;
-    }
-    .illustration-phones{
-        top: -4rem;
     }
     .management-info .title,
     .main_third-content .second-info{
